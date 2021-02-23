@@ -1,0 +1,71 @@
+{
+  "Configuration": {
+    "Log_Level": "verbose"
+  },
+  "Colors": {
+    "FormatComment": "red,green,blue",
+    "OFF": "0,0,0",
+    "RED": "255,0,0",
+    "GREEN": "0,255,0",
+    "BLUE": "0,0,255",
+    "YELLOW": "255,255,0",
+    "PURPLE": "255,0,255",
+    "CYAN": "0,255,255",
+    "WHITE": "255,255,255",
+    "GOLD": "215,175,0"
+  },
+  "Shutdown": "OFF",
+  "Schedule": {
+    "Time": {
+      "Morning": "6:00",
+      "Day": "12:00",
+      "Evening": "18:00",
+      "Night": "21:00"
+    },
+    "Day": {
+      "All": "Sun",
+      "Sunday": {
+        "Morning": "RED",
+        "Day": "GREEN",
+        "Evening": "BLUE",
+        "Night": "OFF"
+      },
+      "Monday": {
+        "Morning": "CYAN",
+        "Day": "GOLD",
+        "Evening": "BLUE",
+        "Night": "OFF"
+      },
+      "Tuesday": {
+        "Morning": "RED",
+        "Day": "GREEN",
+        "Evening": "BLUE",
+        "Night": "OFF"
+      },
+      "Wednesday": {
+        "Morning": "RED",
+        "Day": "GREEN",
+        "Evening": "BLUE",
+        "Night": "OFF"
+      },
+      "Thursday": {
+        "Morning": "YELLOW",
+        "Day": "GREEN",
+        "Evening": "BLUE",
+        "Night": "OFF"
+      },
+      "Friday": {
+        "Morning": "RED",
+        "Day": "GREEN",
+        "Evening": "BLUE",
+        "Night": "OFF"
+      },
+      "Saturday": {
+        "Morning": "RED",
+        "Day": "GREEN",
+        "Evening": "BLUE",
+        "Night": "OFF"
+      }
+    }
+  }
+}
