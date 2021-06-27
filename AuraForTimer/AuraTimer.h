@@ -57,6 +57,7 @@ private:
 	MbLightControl* mbLightCtrl;
 	BYTE* colorArray;
 	time_t morning;
+	struct tm* morningData;
 	time_t day;
 	time_t evening;
 	time_t night;
@@ -175,7 +176,8 @@ public:
 				loadTimeStructs();
 				std::string todayWeekDay = datetime::getCurrentDay();
 				time_t current = time(nullptr);
-
+				struct tm* tmp = localtime(&current);
+				
 				// Default is morning, so use that
 				std::string useWhichTime = "Morning";
 				sleepUntil = datetime::addOneMin(day);
@@ -190,11 +192,16 @@ public:
 					useWhichTime = "Evening";
 					sleepUntil = datetime::addOneMin(night);
 				}
-				else if (difftime(current, night) >= 0 && difftime(current, nextMorning) < 0)
+
+				//Case 1: Started between 9pm 1/1 and 6am 1/2
+				//Case 2: Started between 12am 1/2 and 6am 1/2
+				else if (difftime(current, night) >= 0 && difftime(current, nextMorning) < 0 ||
+					tmp->tm_hour > 0 && tmp->tm_hour < morningData->tm_hour)
 				{
 					useWhichTime = "Night";
 					sleepUntil = nextMorning;
 				}
+				
 				char buffer[80];
 				strftime(buffer, 80, "%c", localtime(&sleepUntil));
 
@@ -221,6 +228,7 @@ public:
 		day = datetime::convertTime(times["Day"]);
 		evening = datetime::convertTime(times["Evening"]);
 		night = datetime::convertTime(times["Night"]);
+		morningData = localtime(&morning);
 	}
 
 	void shutdownLights()
